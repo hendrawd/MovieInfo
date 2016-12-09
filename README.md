@@ -17,6 +17,13 @@ If you want to clone it and make it works, please provide your api key from http
 * Add to favorite and show favorited movies.
 * Detail screen that has fields: Original title, Release date, Genre, Rating, Overview with TextToSpeech capability, Related videos, and Latest reviews. You can also share trailer and detail via other applications.
 
+## Screenshots:
+### Phone
+<img src="https://cloud.githubusercontent.com/assets/9481791/21049633/98c409dc-be48-11e6-8460-850311d15dca.png" alt="Phone Home" width="300px">
+<img src="https://cloud.githubusercontent.com/assets/9481791/21049635/98faf2d0-be48-11e6-9b05-d062c29e89c4.png" alt="Phone Detail" width="300px">
+### Tablet
+<img src="https://cloud.githubusercontent.com/assets/9481791/21049839/afdfcde4-be49-11e6-996a-ead156a05479.png" alt="Phone Detail" width="600px">
+
 ## Libraries Used:
 ### Design and compatibility
 * com.android.support:design:25.0.1
