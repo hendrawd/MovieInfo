@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="hendrawd.ganteng.movieinfo"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:name=".MainApplication"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:replace="android:icon">
+
+        <activity
+            android:name=".activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="hendrawd.ganteng.movieinfo.MainActivity"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.DetailActivity">
+            <intent-filter>
+                <action android:name="hendrawd.ganteng.movieinfo.DetailActivity"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.SearchActivity">
+            <intent-filter>
+                <action android:name="hendrawd.ganteng.movieinfo.SearchActivity"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.FavoriteActivity">
+            <intent-filter>
+                <action android:name="hendrawd.ganteng.movieinfo.FavoriteActivity"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:name=".activity.YoutubePlayerActivity">
+            <intent-filter>
+                <action android:name="hendrawd.ganteng.movieinfo.YoutubePlayerActivity"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
