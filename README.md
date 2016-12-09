@@ -9,13 +9,13 @@ If you want to clone it and make it works, please provide your api key from http
 
 ## Main Feature:
 * Material design.
-* Support minimal android version 15(Ice Cream Sandwich).
+* Support android minimal version 15(Ice Cream Sandwich).
 * Support portrait and landscape orientation.
 * Responsive design for phones and tablets.
 * 3 main categories: Popular, Top Rated, and Upcoming.
 * Search movie.
 * Add to favorite and show favorited movies.
-* Detail screen that has field: Original title, Release date, Genre, Rating, Overview with TextToSpeech capability, Related videos, and Latest reviews. You can also share trailer and detail via other applications.
+* Detail screen that has fields: Original title, Release date, Genre, Rating, Overview with TextToSpeech capability, Related videos, and Latest reviews. You can also share trailer and detail via other applications.
 
 ## Libraries Used:
 ### Design and compatibility
@@ -29,6 +29,7 @@ If you want to clone it and make it works, please provide your api key from http
 ### Network
 * com.android.volley:volley:1.0.0
 * com.squareup.okhttp3:okhttp:3.4.2
+
 OkHttp here to boost the performance of volley
 
 ### JSON Serializer/Deserializer
