@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/main_content"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:background="?attr/colorPrimary"
+            android:id="@+id/toolbar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_gravity="bottom|right"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_up"
+        android:visibility="gone"
+        app:layout_anchor="@id/recycler_view"
+        app:layout_anchorGravity="bottom|right|end"
+        app:layout_behavior="hendrawd.ganteng.movieinfo.util.ScrollAwareFABBehavior"
+        tools:ignore="RtlHardcoded"/>
+
+    <TextView
+        android:id="@+id/tv_empty"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
+        android:layout_width="wrap_content"
+        android:text="@string/no_data_found"
+        android:textColor="@color/secondaryText"
+        android:textSize="@dimen/text_big"
+        android:visibility="gone"/>
+
+</android.support.design.widget.CoordinatorLayout>

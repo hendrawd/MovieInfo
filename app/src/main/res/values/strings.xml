@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">MovieInfo</string>
+    <string name="overview">Overview</string>
+    <string name="related_videos">Related videos</string>
+    <string name="latest_reviews">Latest Reviews</string>
+    <string name="release_date">Release date</string>
+    <string name="original_title">Original title</string>
+    <string name="genre">Genre</string>
+    <string name="rating">Rating</string>
+    <string name="rating_number">%s/5</string>
+    <string name="video_type">Type : %s</string>
+    <string name="share">Share</string>
+    <string name="share_with">Share With</string>
+    <string name="search">Search</string>
+    <string name="searching">Searching</string>
+    <string name="no_data_found">No data found!</string>
+    <string name="no_favorite_movies">No favorite movies!</string>
+    <string name="loading">Loading…</string>
+    <string name="about">About</string>
+    <string name="no_information">No information</string>
+    <string name="no_new_movies">No new movies in %s category</string>
+    <string name="no_internet_connection">No internet connection!</string>
+    <string name="detail">Detail</string>
+    <string name="first_trailer">First Trailer</string>
+    <string name="no_trailers">No trailers</string>
+    <string name="category_popular">Popular</string>
+    <string name="category_top_rated">Top Rated</string>
+    <string name="category_upcoming">Upcoming</string>
+    <string name="review_author">Author: %s</string>
+    <string name="favorite">Favorite</string>
+    <string name="show_favorites">Show Favorites</string>
+    <string name="unfavorite">Unfavorite</string>
+    <string name="no_movie_selected">No movie selected</string>
+</resources>

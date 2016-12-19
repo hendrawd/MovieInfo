@@ -1,0 +1,14 @@
+*.iml
+.gradle
+local.properties
+.idea
+#/.idea/workspace.xml
+#/.idea/libraries
+.DS_Store
+build
+captures
+app/mirror
+ShortcutBadger/
+projectFilesBackup/
+.externalNativeBuild
+app/src/main/res/values/credentials.xml

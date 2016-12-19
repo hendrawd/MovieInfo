@@ -1,0 +1,25 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="hendrawd.ganteng.movieinfo.activity.DetailActivity">
+
+    <item
+        android:icon="@android:drawable/ic_menu_share"
+        android:id="@+id/menu_share"
+        android:title="@string/share"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/menu_detail"
+                android:title="@string/detail"/>
+            <item
+                android:id="@+id/menu_first_trailer"
+                android:title="@string/first_trailer"/>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/menu_favorite"
+        android:title="@string/favorite"/>
+</menu>
