@@ -5,7 +5,7 @@ Created with Android Studio version 2.2.3
 
 This project use API from http://themoviedb.org
 
-If you want to clone it and make it works, please provide your api keys in app/res/values/credentials.xml
+If you want to clone it and make it works, please provide your api keys in app/src/main/res/values/credentials.xml
 
 ## Main Feature:
 * Material design.
