@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "248071968863",
+    "firebase_url": "https://testrepo-1022.firebaseio.com",
+    "project_id": "testrepo-1022",
+    "storage_bucket": "testrepo-1022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248071968863:android:2adae2466b2a553a",
+        "android_client_info": {
+          "package_name": "hendrawd.ganteng.movieinfo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "248071968863-4h4la2vnlkap9o6nutcgh7imlrdccu8c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hendrawd.ganteng.movieinfo",
+            "certificate_hash": "B68E0B6DA49A200CCFA0200A82BE98654767E18F"
+          }
+        },
+        {
+          "client_id": "248071968863-04fq4tqhff767r5d4bhojuhcnrvsi4hc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIDutqjkycJdA061NQsk4MXgDZ-loVbiE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "248071968863-04fq4tqhff767r5d4bhojuhcnrvsi4hc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

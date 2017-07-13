@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -26,6 +27,9 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
+import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
+import com.ibm.watson.developer_cloud.text_to_speech.v1.TextToSpeech;
+import com.ibm.watson.developer_cloud.text_to_speech.v1.model.Voice;
 
 import java.util.List;
 import java.util.Locale;
@@ -46,7 +50,6 @@ import hendrawd.ganteng.movieinfo.network.response.Review;
 import hendrawd.ganteng.movieinfo.network.response.Video;
 import hendrawd.ganteng.movieinfo.util.GenreMapper;
 import hendrawd.ganteng.movieinfo.util.Logger;
-import hendrawd.ganteng.movieinfo.util.TextToSpeechHelper;
 import hendrawd.ganteng.movieinfo.util.Util;
 import hendrawd.ganteng.movieinfo.view.AutoFitImageView;
 import hendrawd.ganteng.movieinfo.view.ContinuedLineView;
@@ -92,7 +95,7 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.ll_review_container)
     LinearLayout llReviewContainer;
 
-    private TextToSpeechHelper textToSpeechHelper;
+    private TextToSpeech textToSpeechService;
     private String firstVideoKey;
 
     @Override
@@ -212,7 +215,7 @@ public class DetailActivity extends AppCompatActivity {
                             }
                         }
                     });
-            VolleySingleton.getInstance(this).addToRequestQueue(gsonRequest);
+            VolleySingleton.getInstance(this).addToRequestQueue(gsonRequest, this);
         }
     }
 
@@ -248,7 +251,7 @@ public class DetailActivity extends AppCompatActivity {
                             }
                         }
                     });
-            VolleySingleton.getInstance(this).addToRequestQueue(gsonRequest);
+            VolleySingleton.getInstance(this).addToRequestQueue(gsonRequest, this);
         }
     }
 
@@ -421,29 +424,42 @@ public class DetailActivity extends AppCompatActivity {
         }
     }
 
+    private TextToSpeech initTextToSpeechService() {
+        TextToSpeech service = new TextToSpeech();
+        String username = getString(R.string.text_speech_username);
+        String password = getString(R.string.text_speech_password);
+        service.setUsernameAndPassword(username, password);
+        return service;
+    }
+
     @OnClick(R.id.iv_speaker)
     public void onClick() {
         pbTextToSpeech.setVisibility(View.VISIBLE);
         String text = tvOverview.getText().toString();
         if (!TextUtils.isEmpty(text)) {
-            if (textToSpeechHelper == null) {
-                textToSpeechHelper = new TextToSpeechHelper();
-                textToSpeechHelper.setCallback(new TextToSpeechHelper.SpeakCallback() {
-                    @Override
-                    public void onSpeak() {
-                        pbTextToSpeech.setVisibility(View.GONE);
-                    }
-                });
+            if (textToSpeechService == null) {
+                textToSpeechService = initTextToSpeechService();
             }
-            textToSpeechHelper.speak(this, text);
+            new SynthesisTask().execute(text);
         }
     }
 
     @Override
     protected void onStop() {
+        VolleySingleton.getInstance(this).cancelPendingRequests(this);
         super.onStop();
-        if (textToSpeechHelper != null) {
-            textToSpeechHelper.stop();
+    }
+
+    private class SynthesisTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            new StreamPlayer().playStream(textToSpeechService.synthesize(params[0], Voice.EN_LISA).execute());
+            return "Did synthesize";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            pbTextToSpeech.setVisibility(View.GONE);
         }
     }
 }

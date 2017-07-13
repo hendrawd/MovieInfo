@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.ibm.mobilefirstplatform.clientsdk.android.analytics.api.Analytics;
+import com.ibm.mobilefirstplatform.clientsdk.android.core.api.BMSClient;
 
 import java.util.List;
 
@@ -35,6 +37,8 @@ public class MainApplication extends Application {
             DbHelper.initDAO(this);
         }
 
+        BMSClient.getInstance().initialize(getApplicationContext(), BMSClient.REGION_US_SOUTH);
+        Analytics.init(this, getString(R.string.app_name), getString(R.string.mobile_analytics_api_key), true, Analytics.DeviceEvent.ALL);
     }
 
     private void requestGenreList() {

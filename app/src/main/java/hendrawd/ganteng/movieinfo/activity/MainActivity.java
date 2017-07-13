@@ -18,6 +18,12 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ibm.mobilefirstplatform.clientsdk.android.analytics.api.Analytics;
+import com.ibm.mobilefirstplatform.clientsdk.android.core.api.Response;
+import com.ibm.mobilefirstplatform.clientsdk.android.core.api.ResponseListener;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +36,7 @@ import hendrawd.ganteng.movieinfo.fragment.DetailFragment;
 import hendrawd.ganteng.movieinfo.fragment.MovieListFragment;
 import hendrawd.ganteng.movieinfo.network.UrlComposer;
 import hendrawd.ganteng.movieinfo.network.response.Movie;
+import hendrawd.ganteng.movieinfo.util.Logger;
 import hendrawd.ganteng.movieinfo.view.CustomAlertDialog;
 import hendrawd.ganteng.movieinfo.view.CustomToast;
 
@@ -188,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.menu_about:
                 CustomAlertDialog.show(this,
-                        "Created with love by hendrawd(hendraz_88@yahoo.co.id) as a final project of Indonesia Android Kejar batch 2, Intermediate class\n\nVersion: " + BuildConfig.VERSION_NAME);
+                        "Created with love by hendrawd(hendraz_88@yahoo.co.id) as a final project of Dicoding class: Belajar Membangun Aplikasi Android dengan IBM Bluemix\n\nVersion: " + BuildConfig.VERSION_NAME);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -254,6 +261,23 @@ public class MainActivity extends AppCompatActivity {
                 doubleBackToExitPressedOnce = false;
             }
         }, 2000);
+    }
+
+    @Override
+    public void finish() {
+        Logger.d("MainActivity", "finish called");
+        Analytics.send(new ResponseListener() {
+            @Override
+            public void onSuccess(Response response) {
+                Logger.d("MainActivity", "send analytics success");
+            }
+
+            @Override
+            public void onFailure(Response response, Throwable t, JSONObject extendedInfo) {
+                Logger.d("MainActivity", "send analytics failed");
+            }
+        });
+        super.finish();
     }
 
     public String getCurrentFragmentTitle() {

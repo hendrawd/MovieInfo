@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -31,6 +32,9 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
+import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
+import com.ibm.watson.developer_cloud.text_to_speech.v1.TextToSpeech;
+import com.ibm.watson.developer_cloud.text_to_speech.v1.model.Voice;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,7 +58,6 @@ import hendrawd.ganteng.movieinfo.network.response.Review;
 import hendrawd.ganteng.movieinfo.network.response.Video;
 import hendrawd.ganteng.movieinfo.util.GenreMapper;
 import hendrawd.ganteng.movieinfo.util.Logger;
-import hendrawd.ganteng.movieinfo.util.TextToSpeechHelper;
 import hendrawd.ganteng.movieinfo.util.Util;
 import hendrawd.ganteng.movieinfo.view.AutoFitImageView;
 import hendrawd.ganteng.movieinfo.view.ContinuedLineView;
@@ -103,7 +106,7 @@ public class DetailFragment extends Fragment {
     @BindView(R.id.button_menu)
     ImageView buttonMenu;
 
-    private TextToSpeechHelper textToSpeechHelper;
+    private TextToSpeech textToSpeechService;
     private String firstVideoKey;
 
     @Nullable
@@ -120,11 +123,12 @@ public class DetailFragment extends Fragment {
         return mainContent;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        //setHasOptionsMenu(true);
+    private TextToSpeech initTextToSpeechService() {
+        TextToSpeech service = new TextToSpeech();
+        String username = getString(R.string.text_speech_username);
+        String password = getString(R.string.text_speech_password);
+        service.setUsernameAndPassword(username, password);
+        return service;
     }
 
     @Override
@@ -438,9 +442,6 @@ public class DetailFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        if (textToSpeechHelper != null) {
-            textToSpeechHelper.stop();
-        }
     }
 
     @OnClick({R.id.button_menu, R.id.iv_speaker})
@@ -453,16 +454,10 @@ public class DetailFragment extends Fragment {
                 pbTextToSpeech.setVisibility(View.VISIBLE);
                 String text = tvOverview.getText().toString();
                 if (!TextUtils.isEmpty(text)) {
-                    if (textToSpeechHelper == null) {
-                        textToSpeechHelper = new TextToSpeechHelper();
-                        textToSpeechHelper.setCallback(new TextToSpeechHelper.SpeakCallback() {
-                            @Override
-                            public void onSpeak() {
-                                pbTextToSpeech.setVisibility(View.GONE);
-                            }
-                        });
+                    if (textToSpeechService == null) {
+                        textToSpeechService = initTextToSpeechService();
                     }
-                    textToSpeechHelper.speak(getActivity(), text);
+                    new SynthesisTask().execute(text);
                 }
                 break;
         }
@@ -572,5 +567,18 @@ public class DetailFragment extends Fragment {
             }
         }); // the callback for when a list item is selected
         popupWindow.show();
+    }
+
+    private class SynthesisTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            new StreamPlayer().playStream(textToSpeechService.synthesize(params[0], Voice.EN_LISA).execute());
+            return "Did synthesize";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            pbTextToSpeech.setVisibility(View.GONE);
+        }
     }
 }

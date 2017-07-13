@@ -208,3 +208,8 @@ public static java.lang.String TABLENAME;
 #contoh notenya:
 #Note: com.google.android.gms.internal.zzlf: can't find dynamically referenced class com.facebook.Session
 #Note: com.google.android.gms.internal.zzlf$1: can't find dynamically referenced class com.facebook.login.LoginResult
+
+#ibm bluemix - proguardnya masih gak jelas gini, gimana mau dipakai sama developer?
+-keep class javax.naming.** { *; }
+-keep class java.awt.** { *; }
+-keep class sun.misc.Unsafe { *; }

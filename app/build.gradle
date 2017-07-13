@@ -21,7 +21,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -32,11 +32,11 @@ dependencies {
 
     compile files('libs/YouTubeAndroidPlayerApi.jar')
 
-    compile 'com.android.support:design:25.0.1'
+    compile 'com.android.support:support-v4:25.0.1'
     compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:design:25.0.1'
     compile 'com.android.support:cardview-v7:25.0.1'
     compile 'com.android.support:recyclerview-v7:25.0.1'
-    compile 'com.android.support:support-v4:25.0.1'
     compile 'me.zhanghai.android.materialratingbar:library:1.0.2'
 
     compile 'com.android.volley:volley:1.0.0'
@@ -51,8 +51,17 @@ dependencies {
 
     compile 'org.greenrobot:greendao:2.2.0'
 
+    compile 'com.ibm.watson.developer_cloud:java-sdk:3.5.3'
+    compile 'com.ibm.watson.developer_cloud:android-sdk:0.2.1'
+    compile 'com.ibm.mobilefirstplatform.clientsdk.android:analytics:1.+'
+
+    compile 'com.google.firebase:firebase-core:10.0.1'
+    compile 'com.google.firebase:firebase-messaging:10.0.1'
+
     testCompile 'junit:junit:4.12'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 }
+
+apply plugin: 'com.google.gms.google-services'
