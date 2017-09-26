@@ -12,3 +12,5 @@ ShortcutBadger/
 projectFilesBackup/
 .externalNativeBuild
 app/src/main/res/values/credentials.xml
+.idea/instapk.xml
+instapk.log*
