@@ -136,7 +136,7 @@ public class SearchActivity extends AppCompatActivity {
                 String searchUrl = getSearchUrl(page);
                 if (!TextUtils.isEmpty(searchUrl)) {
                     requestingData = true;
-                    @SuppressWarnings("unchecked") final GsonRequest gsonRequest = new GsonRequest(
+                    final GsonRequest<GetMovieList> gsonRequest = new GsonRequest<>(
                             searchUrl,
                             GetMovieList.class,
                             null,

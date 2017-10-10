@@ -38,7 +38,7 @@ public class MainApplication extends Application {
     }
 
     private void requestGenreList() {
-        @SuppressWarnings("unchecked") final GsonRequest gsonRequest = new GsonRequest(
+        final GsonRequest<GetGenreList> gsonRequest = new GsonRequest<>(
                 UrlComposer.getGenreListUrl(this),
                 GetGenreList.class,
                 null,

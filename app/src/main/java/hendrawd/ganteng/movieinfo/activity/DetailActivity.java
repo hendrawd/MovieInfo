@@ -179,7 +179,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void getVideoData(String movieId) {
         if (!TextUtils.isEmpty(movieId)) {
-            @SuppressWarnings("unchecked") final GsonRequest gsonRequest = new GsonRequest(
+            final GsonRequest<GetVideoList> gsonRequest = new GsonRequest<>(
                     UrlComposer.getVideoUrl(this, movieId),
                     GetVideoList.class,
                     null,
@@ -218,7 +218,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void getReviewData(String movieId) {
         if (!TextUtils.isEmpty(movieId)) {
-            @SuppressWarnings("unchecked") final GsonRequest gsonRequest = new GsonRequest(
+            final GsonRequest<GetReviewList> gsonRequest = new GsonRequest<>(
                     UrlComposer.getReviewUrl(this, movieId, 1),
                     GetReviewList.class,
                     null,

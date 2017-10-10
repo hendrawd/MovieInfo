@@ -142,7 +142,7 @@ public class MovieListFragment extends Fragment {
                 String category = getArguments().getString("category");
                 if (!TextUtils.isEmpty(category)) {
                     requestingData = true;
-                    @SuppressWarnings("unchecked") final GsonRequest gsonRequest = new GsonRequest(
+                    final GsonRequest<GetMovieList> gsonRequest = new GsonRequest<>(
                             UrlComposer.getMovieUrl(getActivity(), category, page),
                             GetMovieList.class,
                             null,

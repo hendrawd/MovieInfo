@@ -269,7 +269,7 @@ public class DetailFragment extends Fragment {
 
     private void getVideoData(String movieId) {
         if (!TextUtils.isEmpty(movieId)) {
-            @SuppressWarnings("unchecked") final GsonRequest gsonRequest = new GsonRequest(
+            final GsonRequest<GetVideoList> gsonRequest = new GsonRequest<>(
                     UrlComposer.getVideoUrl(getActivity(), movieId),
                     GetVideoList.class,
                     null,
@@ -308,7 +308,7 @@ public class DetailFragment extends Fragment {
 
     private void getReviewData(String movieId) {
         if (!TextUtils.isEmpty(movieId)) {
-            @SuppressWarnings("unchecked") final GsonRequest gsonRequest = new GsonRequest(
+            final GsonRequest<GetReviewList> gsonRequest = new GsonRequest<>(
                     UrlComposer.getReviewUrl(getActivity(), movieId, 1),
                     GetReviewList.class,
                     null,
