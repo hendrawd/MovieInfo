@@ -153,7 +153,7 @@ public class MovieListFragment extends Fragment {
                                         if (getMovieListResponse != null &&
                                                 movieResponse != null &&
                                                 getMovieListResponse.getResults().get(0).getId().equals(
-                                                        getMovieListResponse.getResults().get(0).getId())
+                                                        movieResponse.getResults().get(0).getId())
                                                 ) {
                                             CustomToast.show(getActivity(),
                                                     getString(R.string.no_new_movies,
